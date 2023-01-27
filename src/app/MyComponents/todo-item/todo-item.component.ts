@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from 'src/app/Todo';
 
 @Component({
@@ -7,10 +7,12 @@ import { Todo } from 'src/app/Todo';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent {
-  @Input()
-  todo!: Todo;
+  @Input() todo!: Todo;
+  @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() {
-    
+  constructor() { }
+
+  OnClick(todo: Todo) {
+    this.todoDelete.emit(todo);
   }
 }
