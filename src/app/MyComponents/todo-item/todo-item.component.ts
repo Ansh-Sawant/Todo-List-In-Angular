@@ -8,11 +8,17 @@ import { Todo } from 'src/app/Todo';
 })
 export class TodoItemComponent {
   @Input() todo!: Todo;
+  @Input() i!:Number;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
+  @Output() todoCheckbox: EventEmitter<Todo> = new EventEmitter();
 
   constructor() { }
 
   OnClick(todo: Todo) {
     this.todoDelete.emit(todo);
+  }
+
+  onCheckboxClick(todo: any){
+    this.todoCheckbox.emit(todo);
   }
 }
